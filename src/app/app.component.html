@@ -1,6 +1,5 @@
 <mat-drawer-container class="example-container mat-typography">
-  <router-outlet></router-outlet>
-	<mat-drawer  #drawer mode="side" disableClose="true" opened="true">
+  <mat-drawer  #drawer mode="side" disableClose="true" opened="true">
     <mat-nav-list >
       <mat-list-item >
         <div class="mat-list" routerLink="inicio">
@@ -9,13 +8,13 @@
         </div>
       </mat-list-item>
 			<mat-list-item >
-				<div class="mat-list"  routerLink="alumnos">
+        <div class="mat-list"  routerLink="alumnos">
           <mat-icon mat-list-icon>person</mat-icon>
 				  <h4>Person</h4>
         </div>
 			</mat-list-item>
 			<mat-list-item >
-				<div class="mat-list" routerLink="cursos/card">
+        <div class="mat-list" routerLink="cursos/card">
           <mat-icon mat-list-icon>folder</mat-icon>
 				  <h4>Courses</h4>
         </div>
@@ -23,6 +22,7 @@
 		</mat-nav-list>
 	</mat-drawer>
 
+  <router-outlet></router-outlet>
 
 
 </mat-drawer-container>

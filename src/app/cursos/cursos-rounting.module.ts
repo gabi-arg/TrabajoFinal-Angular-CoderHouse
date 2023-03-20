@@ -6,7 +6,7 @@ import { EditarCursoComponent } from './components/editar-curso/editar-curso.com
 
 
 const routes: Routes = [
-  {path: 'cursos', children:[
+  {path:'cursos', children:[
     { path:'editar', component: EditarCursoComponent},
     { path: 'agregar', component: AgregarCursosComponent},
     { path: 'card', component: CursosCardComponent},
