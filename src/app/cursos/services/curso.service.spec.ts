@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { CursosService } from './services.service';
+import { CursosService } from './curso.service';
 
 
 

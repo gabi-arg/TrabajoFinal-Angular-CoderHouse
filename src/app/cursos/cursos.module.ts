@@ -4,17 +4,12 @@ import { CursosCardComponent } from './components/cursos-card/cursos-card.compon
 import { AgregarCursosComponent } from './components/agregar-cursos/agregar-cursos.component';
 import { MaterialModule } from '../material.module';
 import { CursosRountingModule } from './cursos-rounting.module';
-import { CursosService } from './services/services.service';
-;
-
-
+import { CursosService } from './services/curso.service';
 
 @NgModule({
   declarations: [
-
     AgregarCursosComponent,
     CursosCardComponent
-
   ],
   imports: [
     CommonModule,

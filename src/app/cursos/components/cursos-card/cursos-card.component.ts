@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Curso } from 'src/app/models/curso';
-import { CursosService } from '../../services/services.service';
+import { CursosService } from '../../services/curso.service';
 
 
 @Component({
@@ -16,7 +15,7 @@ export class CursosCardComponent implements OnInit{
 
   constructor(
     private cursoService: CursosService,
-    private router: Router
+
   ){}
   ngOnInit() {
   this.cursos$ = this.cursoService.obtenerCursos();

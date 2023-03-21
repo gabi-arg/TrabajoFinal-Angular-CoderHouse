@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListaAlumnosComponent } from './components/lista-alumnos/lista-alumnos.component';
-import { AlumnosRountingModule } from './alumnos-rounting.module';
+import { MaterialModule } from '../material.module';
+import { TablaAlumnosComponent } from './components/lista-alumnos/tabla-alumnos.component';
+
+
 
 
 
 @NgModule({
   declarations: [
-    ListaAlumnosComponent,
+    TablaAlumnosComponent
   ],
   imports: [
     CommonModule,
-    AlumnosRountingModule
+    MaterialModule
+
   ]
 })
 export class AlumnosModule { }
