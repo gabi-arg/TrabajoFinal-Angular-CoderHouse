@@ -1,28 +1,26 @@
-
-
-
-<div class="container">
+<div class="container"*ngIf="sesion$ | async as sesion"   >
+  <ng-container  *ngIf="sesion$ | async as sesion">
+    <button routerLink="/cursos/agregar" class="btn"  *ngIf="sesion.usuarioActivo?.esAdmin">Agregar Curso</button>
+  </ng-container>
   <div class="row">
-      <div class="col-md-3" *ngFor="let curso of cursos$ |async">
-          <mat-card class="card">
-              <mat-card-header>
-                  <mat-card-title>{{ curso.nombre}}</mat-card-title>
-                  <mat-card-subtitle>{{ curso.comision }}</mat-card-subtitle>
-              </mat-card-header>
-              <img class="card-imagen" mat-card-image src="https://www.bbvaapimarket.com/wp-content/uploads/2018/08/recursosprogramadores.png" alt="">
-              <mat-card-content>
-                  <p>Impartido por {{ curso.profesor.nombre }}</p>
-                  <p>{{ curso.inscripcionAbierta }}</p>
-              </mat-card-content>
-              <mat-card-actions align="end">
-                  <button mat-raised-button class="btn">
-                      Editar
-                  </button>
-                  <button mat-button class="btn">
-                      Eliminar
-                  </button>
-              </mat-card-actions>
-          </mat-card>
-      </div>
+    <div class="col-md-3 " *ngFor="let curso of cursos$ |async">
+      <mat-card class="card">
+        <mat-card-header class="header">
+          <mat-card-title class="title">{{ curso.nombre}}</mat-card-title>
+        </mat-card-header>
+        <img class="card-imagen" mat-card-image src="https://www.bbvaapimarket.com/wp-content/uploads/2018/08/recursosprogramadores.png" alt="">
+        <mat-card-content align="center" style="margin: 15px;">
+          <p>{{ curso.inscripcionAbierta | booleanoATexto: 'Inscripciones abiertas' : 'Inscripciones cerradas' }}</p>
+          <p>{{ curso.precio}}</p>
+        </mat-card-content>
+        <mat-card-actions class="action">
+          <button >Mas Detalles</button>
+          <button *ngIf="sesion.usuarioActivo?.esAdmin" (click)="editarCursoDialog(curso)" >Editar Curso</button>
+          <button *ngIf="sesion.usuarioActivo?.esAdmin" (click)="eliminarCurso(curso)" >Eliminar Curso</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+
   </div>
-</div>
+  </div>
+

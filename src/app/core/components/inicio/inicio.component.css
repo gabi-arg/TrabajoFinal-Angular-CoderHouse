@@ -23,9 +23,12 @@
 .btn-inicio{
   position: absolute;
   top: 75%;
-  width: 180px;
+  width: auto;
   height: 80px;
+  padding: 30px;
   border-radius: 15px;
-  background-color:#00a69a;
+  background-color:#ffa300;
+  color: #ffffff;
+  font-size: 32px;
   border: none;
 }

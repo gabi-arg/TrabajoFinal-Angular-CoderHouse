@@ -1,11 +1,14 @@
-/* import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { TablaAlumnosComponent } from './components/tabla-alumnos/tabla-alumnos.component';
 
 
 
 const routes: Routes = [
-  {path:'alumnos', children:[
-    {path:'lista-alumnos', component: ListaAlumnosComponent}
+  {
+    path:'',
+      children:[
+    {path:'tabla', component: TablaAlumnosComponent},
 
 
   ]}
@@ -18,4 +21,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AlumnosRountingModule { }
- */
+

@@ -1,4 +1,4 @@
-<mat-drawer-container class="example-container mat-typography">
+<mat-drawer-container class="example-container mat-typography" *ngIf="sesion$ | async as sesion">
   <mat-drawer  #drawer mode="side" disableClose="true" opened="true">
     <mat-nav-list >
       <mat-list-item >
@@ -8,17 +8,18 @@
         </div>
       </mat-list-item>
 			<mat-list-item >
-        <div class="mat-list"  routerLink="alumnos">
-          <mat-icon mat-list-icon>person</mat-icon>
-				  <h4>Person</h4>
+        <div class="mat-list" (click)="logout()">
+          <mat-icon mat-list-icon>login</mat-icon>
+				  <h4>Ingresar</h4>
         </div>
 			</mat-list-item>
-			<mat-list-item >
-        <div class="mat-list" routerLink="cursos/card">
+      <mat-list-item >
+        <div class="mat-list"  *ngIf="sesion.sesionActiva" routerLink="/cursos/card">
           <mat-icon mat-list-icon>folder</mat-icon>
-				  <h4>Courses</h4>
+				  <h4>Cursos</h4>
         </div>
 			</mat-list-item>
+
 		</mat-nav-list>
 	</mat-drawer>
 
@@ -26,5 +27,6 @@
 
 
 </mat-drawer-container>
+
 
 

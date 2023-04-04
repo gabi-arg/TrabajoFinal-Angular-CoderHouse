@@ -1,4 +1,51 @@
-.btn {
-  background-color: #00808b;
-  margin-left: 1rem;
+.container{
+  margin-top: 30px ;
+
 }
+.card{
+  margin-bottom: 25px;
+}
+
+
+.header{
+display: flex;
+justify-content: center;
+}
+.title{
+  font-size: 1.2rem;
+}
+.action{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.action button {
+  border: none;
+  border-radius: 10px;
+  height: 50px;
+  padding: 10px 20px;
+  color: #ffffff;
+  background-color: #00808b;
+}
+
+
+.btn{
+
+  background-color:#00a69a;
+  border: none;
+  color: #ffffff;
+  padding: 10px 20px;
+  margin-left: 1150px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+
+}
+
+.btn:hover{
+  background-color: #00808b;
+  padding: 15px 25px;
+  border-radius: 10px;
+}
+

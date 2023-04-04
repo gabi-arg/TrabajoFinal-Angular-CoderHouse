@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AgregarCursosComponent } from './components/agregar-cursos/agregar-cursos.component';
+import { AdminGuard } from '../core/guards/admin.guard';
+import { SesionGuard } from '../core/guards/sesion.guard';
+import { CursoEditarComponent } from './components/curso-editar/curso-editar.component';
+import { CursosAgregarComponent } from './components/cursos-agregar/cursos-agregar.component';
 import { CursosCardComponent } from './components/cursos-card/cursos-card.component';
-import { EditarCursoComponent } from './components/editar-curso/editar-curso.component';
+
 
 
 const routes: Routes = [
-  {path:'cursos', children:[
-    { path:'editar', component: EditarCursoComponent},
-    { path: 'agregar', component: AgregarCursosComponent},
-    { path: 'card', component: CursosCardComponent},
-
-
+  {
+    path:'',canActivateChild: [SesionGuard],
+      children:[
+    {path:'editar', component: CursoEditarComponent, canActivate:[AdminGuard]},
+    {path:'card', component: CursosCardComponent },
+    {path:'agregar', component: CursosAgregarComponent,canActivate:[AdminGuard]},
   ]}
 
 ];
