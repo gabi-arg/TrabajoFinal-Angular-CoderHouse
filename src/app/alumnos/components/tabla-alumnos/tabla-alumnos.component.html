@@ -1,29 +1,51 @@
-<table mat-table [dataSource]="dataSource" >
 
+<mat-toolbar>
+  <h2> LISTA ALUMNOS</h2>
+  <button mat-button routerLink="/alumnos/agregar">Agregar Alumnos</button>
+</mat-toolbar>
+
+
+<table mat-table [dataSource]="dataSource"  class="mat-elevation-z6" >
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let alumno"> {{alumno.id}} </td>
+  </ng-container>
   <ng-container matColumnDef="nombre">
     <th mat-header-cell *matHeaderCellDef> Nombre </th>
-    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+    <td mat-cell *matCellDef="let alumno"> {{alumno.nombre}} </td>
   </ng-container>
    <ng-container matColumnDef="cursoRealizado">
     <th mat-header-cell *matHeaderCellDef>Cursos Realizados </th>
-    <td mat-cell *matCellDef="let element"> {{element.cursoRealizado}} </td>
+    <td mat-cell *matCellDef="let alumno"> {{alumno.cursoRealizado}} </td>
   </ng-container>
   <ng-container matColumnDef="correo">
     <th mat-header-cell *matHeaderCellDef> Correo </th>
-    <td mat-cell *matCellDef="let element"> {{element.correo}} </td>
+    <td mat-cell *matCellDef="let alumno"> {{alumno.correo}} </td>
   </ng-container>
   <ng-container matColumnDef="pais">
     <th mat-header-cell *matHeaderCellDef> Pais </th>
-    <td mat-cell *matCellDef="let element"> {{element.pais}} </td>
+    <td mat-cell *matCellDef="let alumno"> {{alumno.pais}} </td>
   </ng-container>
   <ng-container matColumnDef="fechaNac">
     <th mat-header-cell *matHeaderCellDef> Fecha Nacimiento </th>
-    <td mat-cell *matCellDef="let element"> {{element.fechaNac}} </td>
+    <td mat-cell *matCellDef="let alumno"> {{alumno.fechaNac |date:'dd/MM/YY'}} </td>
   </ng-container>
-
-
-
-
-  <tr class="mat-row" *matHeaderRowDef="columnas"></tr>
+  <ng-container matColumnDef="editar">
+    <th mat-header-cell *matHeaderCellDef>Editar</th>
+    <td mat-cell *matCellDef="let alumno">
+        <button mat-icon-button  (click)="editarAlumno(alumno)">
+            <mat-icon>edit</mat-icon>
+        </button>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="eliminar">
+    <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+    <td mat-cell *matCellDef="let alumno">
+        <button mat-icon-button  (click)="eliminarAlumno(alumno)">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="columnas"></tr>
   <tr mat-row *matRowDef="let row; columns: columnas"></tr>
 </table>

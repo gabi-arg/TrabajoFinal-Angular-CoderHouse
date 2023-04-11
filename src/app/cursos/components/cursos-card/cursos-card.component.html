@@ -1,7 +1,5 @@
-<div class="container"*ngIf="sesion$ | async as sesion"   >
-  <ng-container  *ngIf="sesion$ | async as sesion">
-    <button routerLink="/cursos/agregar" class="btn"  *ngIf="sesion.usuarioActivo?.esAdmin">Agregar Curso</button>
-  </ng-container>
+<div class="container"  >
+
   <div class="row">
     <div class="col-md-3 " *ngFor="let curso of cursos$ |async">
       <mat-card class="card">
@@ -13,10 +11,12 @@
           <p>{{ curso.inscripcionAbierta | booleanoATexto: 'Inscripciones abiertas' : 'Inscripciones cerradas' }}</p>
           <p>{{ curso.precio}}</p>
         </mat-card-content>
-        <mat-card-actions class="action">
-          <button >Mas Detalles</button>
-          <button *ngIf="sesion.usuarioActivo?.esAdmin" (click)="editarCursoDialog(curso)" >Editar Curso</button>
-          <button *ngIf="sesion.usuarioActivo?.esAdmin" (click)="eliminarCurso(curso)" >Eliminar Curso</button>
+        <mat-card-actions class="actions">
+          <button class="btn" (click)="detalleCurso(curso)">Mas Detalles</button>
+          <div class="action">
+            <button  (click)="editarCursoDialog(curso)" >Editar</button>
+          <button  (click)="eliminarCurso(curso)" >Eliminar</button>
+          </div>
         </mat-card-actions>
       </mat-card>
     </div>

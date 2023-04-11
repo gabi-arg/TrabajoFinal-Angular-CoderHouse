@@ -25,9 +25,10 @@ export class CursosService {
 
   editarCurso(curso: Curso): Observable<Curso>{
     return this.http.put<Curso>(`${env.apiURL}/cursos/${curso.id}`,curso)
-
-
-    }
+  }
+  detalleCurso(curso:Curso): Observable<Curso>{
+    return this.http.get<Curso>(`${env.apiURL}/cursos/${curso.id}`)
+  }
 
   eliminarCurso(curso:Curso): Observable<Curso>{
    return this.http.delete<Curso>(`${env.apiURL}/cursos/${curso.id}`)

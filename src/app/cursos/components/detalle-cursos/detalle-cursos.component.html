@@ -1,0 +1,23 @@
+<div class="container"*ngIf="sesion$ | async as sesion"   >
+
+  <div class="row">
+    <div class="col-md-3 " *ngFor="let curso of cursos$ |async">
+      <mat-card class="card">
+        <mat-card-header class="header">
+          <mat-card-title class="title">{{ curso.nombre}}</mat-card-title>
+        </mat-card-header>
+        <img class="card-imagen" mat-card-image src="https://www.bbvaapimarket.com/wp-content/uploads/2018/08/recursosprogramadores.png" alt="">
+        <mat-card-content align="center" style="margin: 15px;">
+          <p>{{ curso.inscripcionAbierta | booleanoATexto: 'Inscripciones abiertas' : 'Inscripciones cerradas' }}</p>
+          <p>{{ curso.precio}}</p>
+          <p>{{curso.profesor}}</p>
+          <p>{{curso.comision}}</p>
+          <p>{{curso.fechaInicio}}</p>
+          <p>{{curso.fechaFin}}</p>
+        </mat-card-content>
+
+      </mat-card>
+    </div>
+
+  </div>
+  </div>

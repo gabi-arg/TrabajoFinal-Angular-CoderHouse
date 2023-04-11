@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
+import { Component,  Input, OnInit,  } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { SesionService } from 'src/app/core/services/sesion.service';
@@ -7,6 +7,11 @@ import { Sesion } from 'src/app/models/sesion';
 import { CursosService } from '../../services/curso.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CursoEditarComponent } from '../curso-editar/curso-editar.component';
+import { Store } from '@ngrx/store';
+import { DetalleCursosComponent } from '../detalle-cursos/detalle-cursos.component';
+import { selectCargandoCursos, selectCursosCargados } from '../../state/cursos-state.selectors';
+import { cursosCargados } from '../../state/cursos-state.actions';
+import { CursoState } from '../../state/cursos-state.reducer';
 
 
 @Component({
@@ -18,20 +23,24 @@ export class CursosCardComponent implements OnInit{
 
   cursos!: Curso[];
   sesion$!: Observable<Sesion>;
-  cursos$!: Observable<Curso[]>
+  cursos$!: Observable<Curso[]>;
+  cargando$!: Observable<Boolean>
   @Input('appBooleanoEstilo') inscripcionAbierta!: boolean;
 
   constructor(
     private cursoService: CursosService,
     private router: Router,
     private sesion: SesionService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private store: Store<CursoState>
 
   ){}
   ngOnInit(): void {
+    this.cargando$ = this.store.select(selectCargandoCursos)
 
-    this.cursos$ = this.cursoService.obtenerCursos();
+    this.cursos$ = this.store.select(selectCursosCargados);
     this.sesion$ = this.sesion.obtenerSesion();
+
   }
   eliminarCurso(curso:Curso){
     this.cursoService.eliminarCurso(curso).subscribe((curso: Curso) =>{
@@ -47,4 +56,10 @@ export class CursosCardComponent implements OnInit{
       this.cursos$ = this.cursoService.obtenerCursos();
     })
   }
+  detalleCurso(curso: Curso){
+    this.dialog.open(DetalleCursosComponent,{
+      data: curso.id
+    })
+  }
 }
+

@@ -1,48 +1,29 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Alumno } from 'src/app/models/alumnos';
+import { env2 } from 'src/environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlumnosService {
-  private alumnos: Alumno[] = [
-    {
-      nombre:'Oscar',
-      cursoRealizando: 'Angular',
-      correo: 'oscarbenavidez@gmail.com',
-      pais: 'Argentina',
-      fechaNac: new Date (1984, 8, 24)
-    },
-    {
-      nombre:'Pedro',
-      cursoRealizando: 'Vue',
-      correo: 'pedropascal@gmail.com',
-      pais: 'Chile',
-      fechaNac: new Date (1994, 5, 14)
-    },
-    {
-      nombre:'Lucia',
-      cursoRealizando: 'React Js',
-      correo: 'luciaduran@gmail.com',
-      pais: 'Argentina',
-      fechaNac: new Date (1999, 6, 19)
-    },
-    {
-      nombre:'Mariela',
-      cursoRealizando: 'Vue',
-      correo: 'marielaperez@gmail.com',
-      pais: 'Uruguay',
-      fechaNac: new Date (1996, 2, 22)
-  }
-  ]
 
-  private alumnos$: BehaviorSubject<Alumno[]>;
-  constructor() {
-  this.alumnos$ = new BehaviorSubject<Alumno[]>(this.alumnos);
-  }
+constructor(
+  private http: HttpClient
+)
+{}
 
   obtenerAlumno(): Observable<Alumno[]>{
-  return this.alumnos$.asObservable();
-}
+  return this.http.get<Alumno[]>(`${env2.apiURL}/alumnos`)
+  }
+  editarAlumno(alumno: Alumno): Observable<Alumno>{
+    return this.http.put<Alumno>(`${env2.apiURL}/alumnos/${alumno.id}`,alumno)
+  }
+  agregarAlumno(alumno: Alumno): Observable<Alumno>{
+    return this.http.post<Alumno>(`${env2.apiURL}/alumnos`,alumno)
+   }
+   eliminarAlumno(alumno:Alumno): Observable<Alumno>{
+    return this.http.delete<Alumno>(`${env2.apiURL}/alumnos/${alumno.id}`)
+   }
 }

@@ -8,6 +8,9 @@ import { CursosService } from './services/curso.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CursosAgregarComponent } from './components/cursos-agregar/cursos-agregar.component';
 import { BooleanoATextoPipe } from './pipes/booleano-atexto.pipe';
+import { DetalleCursosComponent } from './components/detalle-cursos/detalle-cursos.component';
+import { StoreModule } from '@ngrx/store';
+import { cursosStateFeatureKey, reducer } from './state/cursos-state.reducer';
 
 
 
@@ -18,7 +21,7 @@ import { BooleanoATextoPipe } from './pipes/booleano-atexto.pipe';
     CursosCardComponent,
     CursoEditarComponent,
     CursosAgregarComponent,
-
+    DetalleCursosComponent,
     BooleanoATextoPipe,
 
   ],
@@ -27,7 +30,7 @@ import { BooleanoATextoPipe } from './pipes/booleano-atexto.pipe';
     CursosRountingModule,
     MaterialModule,
     ReactiveFormsModule,
-
+    StoreModule.forFeature(cursosStateFeatureKey, reducer)
 
   ],
   providers: [

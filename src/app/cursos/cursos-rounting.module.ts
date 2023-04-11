@@ -10,11 +10,11 @@ import { CursosCardComponent } from './components/cursos-card/cursos-card.compon
 
 const routes: Routes = [
   {
-    path:'',canActivateChild: [SesionGuard],
+    path:'',
       children:[
-    {path:'editar', component: CursoEditarComponent, canActivate:[AdminGuard]},
+    {path:'editar', component: CursoEditarComponent},
     {path:'card', component: CursosCardComponent },
-    {path:'agregar', component: CursosAgregarComponent,canActivate:[AdminGuard]},
+    {path:'agregar', component: CursosAgregarComponent},
   ]}
 
 ];

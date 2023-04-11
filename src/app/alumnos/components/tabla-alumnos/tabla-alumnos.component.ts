@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Alumno } from 'src/app/models/alumnos';
 import { AlumnosService } from '../../services/alumnos.service';
+
+import { MatDialog } from '@angular/material/dialog';
+import { EditarAlumnosComponent } from '../editar-alumnos/editar-alumnos.component';
 
 @Component({
   selector: 'app-tabla-alumnos',
@@ -11,9 +14,15 @@ import { AlumnosService } from '../../services/alumnos.service';
 })
 export class TablaAlumnosComponent implements OnInit {
     dataSource!: MatTableDataSource<Alumno>;
-    columnas: string[] = ['nombre', 'cursoRealizado', 'correo', 'pais', 'fechaNac']
+    columnas: string[] = ['id','nombre', 'cursoRealizado', 'correo', 'pais', 'fechaNac','editar','eliminar']
     suscripcion!:Subscription;
-    constructor( private alumnoService: AlumnosService){}
+    alumno!: Alumno[];
+    alumnos$!: Observable<Alumno[]>
+    constructor(
+      private alumnoService: AlumnosService,
+      private dialog: MatDialog
+
+      ){}
 
 
 
@@ -21,15 +30,24 @@ export class TablaAlumnosComponent implements OnInit {
       this.dataSource =  new MatTableDataSource<Alumno>();
       this.suscripcion = this.alumnoService.obtenerAlumno().subscribe((alumnos: Alumno[])=>{
         this.dataSource.data = alumnos;
-
-
-
       })
-  };
+    };
 
+    editarAlumno(alumno: Alumno){
+      this.dialog.open(EditarAlumnosComponent,{
+        data: alumno
+      }).afterClosed().subscribe((alumno: Alumno)=>{
+        alert(`Los datos de ${alumno.nombre} ha sido modificado`);
+        this.alumnos$ = this.alumnoService.obtenerAlumno();
+      })
 
+    }
 
-      };
+    eliminarAlumno(alumno:Alumno){
+      this.alumnoService.eliminarAlumno(alumno).subscribe((alumno: Alumno) =>{
+        alert(`${alumno.nombre} eliminado`);
+        this.alumnos$ = this.alumnoService.obtenerAlumno();
+      });
+    }
 
-
-
+  }

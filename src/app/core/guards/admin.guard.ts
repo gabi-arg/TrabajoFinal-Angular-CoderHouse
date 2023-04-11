@@ -3,6 +3,9 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { map, Observable } from 'rxjs';
 import { Sesion } from 'src/app/models/sesion';
 import { SesionService } from '../services/sesion.service';
+import { Store } from '@ngrx/store';
+import { AuthState } from 'src/app/autenticacion/state/auth.reducer';
+import { selectAuthState, selectSesionState } from 'src/app/autenticacion/state/auth.selectors';
 
 @Injectable({
   providedIn: 'root'
@@ -10,14 +13,14 @@ import { SesionService } from '../services/sesion.service';
 export class AdminGuard implements CanActivate {
 
   constructor(
-    private sesion: SesionService,
+    private authState: Store<AuthState>,
     private router: Router
   ){}
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.sesion.obtenerSesion().pipe(
+    return this.authState.select(selectSesionState).pipe(
       map((sesion: Sesion)=> {
         if(sesion.usuarioActivo?.esAdmin){
           return true;

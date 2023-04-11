@@ -1,0 +1,39 @@
+
+<h1 mat-dialog-title>EDITAR ALUMNO</h1>
+<div mat-dialog-content>
+  <form [formGroup]="formulario" (ngSubmit)="editarAlumno()">
+    <div class="row">
+      <mat-form-field class="col-md-12" >
+        <mat-label>Id</mat-label>
+        <input matInput formControlName="id">
+      </mat-form-field>
+      <mat-form-field class="col-md-12" >
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre">
+      </mat-form-field>
+      <mat-form-field class="col-md-12" >
+        <mat-label>Correo</mat-label>
+        <input matInput formControlName="correo">
+      </mat-form-field>
+      <mat-form-field class="col-md-12" >
+        <mat-label>Pais</mat-label>
+        <input matInput formControlName="pais">
+      </mat-form-field>
+      <mat-form-field class="col-md-6">
+        <mat-label>Fecha Nacimientoo</mat-label>
+        <input matInput [matDatepicker]="fechaInicio" formControlName="fechaInicio">
+        <mat-datepicker-toggle matSuffix [for]="fechaInicio"></mat-datepicker-toggle>
+        <mat-datepicker #fechaInicio></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="col-md-6" >
+        <mat-label>Curso Realizado</mat-label>
+        <input matInput formControlName="cursoRealizado">
+      </mat-form-field>
+    </div>
+
+  </form>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-raised-button (click)="editarAlumno()">Editar</button>
+
+</div>
