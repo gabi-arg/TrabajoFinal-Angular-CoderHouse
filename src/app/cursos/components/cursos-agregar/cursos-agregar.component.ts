@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import {  Router } from '@angular/router';
 import { Curso } from 'src/app/models/curso';
 import { CursosService } from '../../services/curso.service';
-import { Observable } from 'rxjs';
-import { Profesor } from 'src/app/models/profesor';
-import { ProfesorService } from 'src/app/core/services/profesor.service';
+
 
 @Component({
   selector: 'app-cursos-agregar',
@@ -14,21 +12,19 @@ import { ProfesorService } from 'src/app/core/services/profesor.service';
 })
 export class CursosAgregarComponent {
   formulario!: FormGroup;
-  profesor$!: Observable<Profesor[]>;
   constructor(
     private cursoService: CursosService,
     private router: Router,
-    private profesores: ProfesorService
+
   ){}
   ngOnInit(): void{
-    this.profesor$ = this.profesores.obtenerProfesores();
+
     this.formulario = new FormGroup({
         nombre:  new FormControl(''),
         comision: new FormControl('') ,
-        profesor: new FormControl({}) ,
+        profesor: new FormControl('') ,
         fechaInicio: new FormControl(''),
         fechaFin: new FormControl (''),
-        precio: new FormControl(''),
         inscripcionAbierta: new FormControl(false),
 
       })
@@ -43,7 +39,6 @@ export class CursosAgregarComponent {
       fechaInicio: this.formulario.value.fechaInicio,
       fechaFin: this.formulario.value.fechaFin,
       inscripcionAbierta: this.formulario.value.inscripcionAbierta,
-      precio: this.formulario.value.precio,
       profesor: this.formulario.value.profesor,
     }
 

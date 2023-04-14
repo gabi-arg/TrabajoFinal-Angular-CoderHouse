@@ -1,8 +1,8 @@
 import { createAction, props } from '@ngrx/store';
 import { Curso } from '../../models/curso';
 
-export const loadCursosState = createAction(
-  '[CursosState] Load CursosStates'
+export const cargarCursosState = createAction(
+  '[CursosState] Cargar CursosStates'
 );
 
 

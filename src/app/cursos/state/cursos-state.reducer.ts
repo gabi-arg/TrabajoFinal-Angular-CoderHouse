@@ -16,7 +16,7 @@ export const initialState: CursoState = {
 
 export const reducer = createReducer(
   initialState,
-  on(CursosStateActions.loadCursosState,(state) => {
+  on(CursosStateActions.cargarCursosState,(state) => {
     return {...state,cargando: true}
   } ),
   on (CursosStateActions.cursosCargados,(state, {cursos})=>{
@@ -24,8 +24,5 @@ export const reducer = createReducer(
   })
  );
 
-export const cursosStateFeature = createFeature({
-  name: cursosStateFeatureKey,
-  reducer,
-});
+
 

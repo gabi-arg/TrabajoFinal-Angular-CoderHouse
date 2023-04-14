@@ -11,6 +11,7 @@ import { BooleanoATextoPipe } from './pipes/booleano-atexto.pipe';
 import { DetalleCursosComponent } from './components/detalle-cursos/detalle-cursos.component';
 import { StoreModule } from '@ngrx/store';
 import { cursosStateFeatureKey, reducer } from './state/cursos-state.reducer';
+import { FechaFormatoPipe } from './pipes/fecha-formato.pipe';
 
 
 
@@ -23,6 +24,7 @@ import { cursosStateFeatureKey, reducer } from './state/cursos-state.reducer';
     CursosAgregarComponent,
     DetalleCursosComponent,
     BooleanoATextoPipe,
+    FechaFormatoPipe
 
   ],
   imports: [

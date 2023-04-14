@@ -1,6 +1,0 @@
-{
-  "usuarios":[
-    { "usuario": "Gabriela","contrasena": "gab.123"," esAdmin": true},
-    { "usuario": "Oscar","contrasena": "osc.123"," esAdmin": false}
-  ]
-}

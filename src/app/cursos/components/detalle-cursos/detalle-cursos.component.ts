@@ -1,11 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { CursosService } from '../../services/curso.service';
-import { Router } from '@angular/router';
-import { SesionService } from 'src/app/core/services/sesion.service';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute} from '@angular/router';
+
 import { Curso } from 'src/app/models/curso';
-import { Observable } from 'rxjs';
-import { Sesion } from 'src/app/models/sesion';
 
 
 @Component({
@@ -14,20 +10,22 @@ import { Sesion } from 'src/app/models/sesion';
   styleUrls: ['./detalle-cursos.component.css']
 })
 export class DetalleCursosComponent implements OnInit {
-  cursos!: Curso[];
-  sesion$!: Observable<Sesion>;
-  cursos$!: Observable<Curso[]>
-  @Input('appBooleanoEstilo') inscripcionAbierta!: boolean;
+  curso!: Curso;
 
-constructor(
-  private cursoService: CursosService,
-    private router: Router,
-    private sesion: SesionService,
-    private dialog: MatDialog,
+  constructor(
+    private activatedRoute: ActivatedRoute,
+  ){}
 
-){}
-ngOnInit(): void{
 
-  this.sesion$ = this.sesion.obtenerSesion();
-}
+  ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe((parametros) => this.curso = {
+      id:(parametros.get('id') || ''),
+      nombre:(parametros.get('nombre') || ''),
+      comision:(parametros.get('comision') || ''),
+      profesor:(parametros.get('profesor') || ''),
+      fechaInicio:new Date(parametros.get('fechaInicio') || ''),
+      fechaFin: new Date(parametros.get('fechaFin') || ''),
+      inscripcionAbierta:(parametros.get('inscripcionAbierta') === 'true')
+    })
+  }
 }
