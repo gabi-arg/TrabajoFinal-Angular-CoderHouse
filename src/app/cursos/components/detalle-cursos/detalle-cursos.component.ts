@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Router} from '@angular/router';
+import { Observable, Subscription, map } from 'rxjs';
+
 
 import { Curso } from 'src/app/models/curso';
+
 
 
 @Component({
@@ -12,8 +17,11 @@ import { Curso } from 'src/app/models/curso';
 export class DetalleCursosComponent implements OnInit {
   curso!: Curso;
 
+  suscription!: Subscription;
   constructor(
     private activatedRoute: ActivatedRoute,
+    private router: Router,
+
   ){}
 
 
@@ -27,5 +35,9 @@ export class DetalleCursosComponent implements OnInit {
       fechaFin: new Date(parametros.get('fechaFin') || ''),
       inscripcionAbierta:(parametros.get('inscripcionAbierta') === 'true')
     })
+  }
+
+ inscribirmeAlCurso(){
+      this.router.navigate(['alumnos/agregar'])
   }
 }

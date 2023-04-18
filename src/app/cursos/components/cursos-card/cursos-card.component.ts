@@ -1,6 +1,6 @@
 import { Component,  Input, OnInit,  } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, Subscriber } from 'rxjs';
+import { Observable } from 'rxjs';
 import { SesionService } from 'src/app/core/services/sesion.service';
 import { Curso } from 'src/app/models/curso';
 import { Sesion } from 'src/app/models/sesion';
@@ -8,7 +8,6 @@ import { CursosService } from '../../services/curso.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CursoEditarComponent } from '../curso-editar/curso-editar.component';
 import { Store } from '@ngrx/store';
-import { DetalleCursosComponent } from '../detalle-cursos/detalle-cursos.component';
 import { selectCargandoCursos, selectCursosCargados } from '../../state/cursos-state.selectors';
 
 import { CursoState } from '../../state/cursos-state.reducer';
@@ -62,7 +61,7 @@ export class CursosCardComponent implements OnInit{
   }
 
   detalleCurso(curso: Curso){
-    this.router.navigate(['/cursos/detalle', curso])
+    this.router.navigate(['/cursos/detalle',curso])
   }
 }
 

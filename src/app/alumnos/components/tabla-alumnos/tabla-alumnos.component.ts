@@ -14,7 +14,7 @@ import { EditarAlumnosComponent } from '../editar-alumnos/editar-alumnos.compone
 })
 export class TablaAlumnosComponent implements OnInit {
     dataSource!: MatTableDataSource<Alumno>;
-    columnas: string[] = ['id','nombre', 'cursoRealizado', 'correo', 'pais', 'fechaNac','editar','eliminar']
+    columnas: string[] = ['id','nombre','apellido','cursoRealizado', 'correo', 'pais', 'fechaNac','editar','eliminar']
     suscripcion!:Subscription;
     alumno!: Alumno[];
     alumnos$!: Observable<Alumno[]>

@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'auth',
     loadChildren: () => import('./autenticacion/autenticacion.module').then(m => m.AutenticacionModule)},
 
+
   {path:'', redirectTo: 'inicio', pathMatch: 'full'},
   {path: 'inicio', component: InicioComponent},
   {path: '**', component: NoEncontradoComponent},

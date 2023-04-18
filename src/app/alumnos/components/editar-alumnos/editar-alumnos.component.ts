@@ -25,6 +25,7 @@ export class EditarAlumnosComponent implements OnInit{
       this.activatedRoute.paramMap.subscribe((parametros)=>{
       this.formulario = new FormGroup({
         nombre:  new FormControl(this.alumno.nombre),
+        apellido:  new FormControl(this.alumno.apellido),
         id: new FormControl(this.alumno.id) ,
         fechaNac: new FormControl(this.alumno.fechaNac) ,
         cursoRealizado: new FormControl(this.alumno.cursoRealizado),
@@ -37,6 +38,7 @@ export class EditarAlumnosComponent implements OnInit{
       let alumno: Alumno = {
         id: this.alumno.id,
         nombre: this.formulario.value.nombre,
+        apellido: this.formulario.value.apellido,
         correo: this.formulario.value.correo,
         fechaNac: this.formulario.value.fechaNac,
         pais: this.formulario.value.pais,

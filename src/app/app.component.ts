@@ -4,7 +4,7 @@ import { Sesion } from './models/sesion';
 import { Observable } from 'rxjs';
 import { SesionService } from './core/services/sesion.service';
 
-import { Curso } from './models/curso';
+
 import { CursosService } from './cursos/services/curso.service';
 
 
@@ -22,15 +22,12 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private sesion: SesionService,
-    private cursoService: CursosService,
+
 
 ){}
   ngOnInit(): void {
     this.sesion$ = this.sesion.obtenerSesion();
-    /* this.store.dispatch(cargarCursos())
-    this.cursoService.obtenerCursos().subscribe((cursos: Curso[])=>{
-      this.store.dispatch(cursosCargados({cursos: cursos}))
-    }); */
+
 
   }
 

@@ -25,7 +25,7 @@ export class CursosAgregarComponent {
         profesor: new FormControl('') ,
         fechaInicio: new FormControl(''),
         fechaFin: new FormControl (''),
-        inscripcionAbierta: new FormControl(false),
+        inscripcionAbierta: new FormControl(''),
 
       })
 

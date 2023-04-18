@@ -22,6 +22,7 @@ export class AgregarAlumnosComponent {
     this.formulario = new FormGroup({
         id: new FormControl(''),
         nombre:  new FormControl(''),
+        apellido:  new FormControl(''),
         correo: new FormControl('') ,
         pais: new FormControl('') ,
         fechaNac: new FormControl(''),
@@ -37,6 +38,7 @@ export class AgregarAlumnosComponent {
     let alumno: Alumno = {
       id: this.formulario.value.id,
       nombre: this.formulario.value.nombre,
+      apellido: this.formulario.value.apellido,
       correo: this.formulario.value.correo,
       fechaNac: this.formulario.value.fechaNac,
       pais: this.formulario.value.pais,

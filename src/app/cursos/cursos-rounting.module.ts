@@ -14,7 +14,8 @@ const routes: Routes = [
     {path:'editar', component: CursoEditarComponent},
     {path:'card', component: CursosCardComponent },
     {path:'agregar', component: CursosAgregarComponent},
-    {path:'detalle', component: DetalleCursosComponent}
+    {path:'detalle', component: DetalleCursosComponent},
+
   ]}
 
 ];
