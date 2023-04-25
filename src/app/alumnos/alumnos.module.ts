@@ -8,6 +8,7 @@ import { FechaPipe } from './pipes/fecha.pipe';
 import { EditarAlumnosComponent } from './components/editar-alumnos/editar-alumnos.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AgregarAlumnosComponent } from './components/agregar-alumnos/agregar-alumnos.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -22,9 +23,9 @@ import { AgregarAlumnosComponent } from './components/agregar-alumnos/agregar-al
   ],
   imports: [
     CommonModule,
-    MaterialModule,
+    SharedModule,
     AlumnosRountingModule,
-    ReactiveFormsModule,
+
 
   ],
   providers:[

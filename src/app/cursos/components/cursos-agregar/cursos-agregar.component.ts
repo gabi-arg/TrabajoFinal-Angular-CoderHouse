@@ -25,7 +25,7 @@ export class CursosAgregarComponent {
         profesor: new FormControl('') ,
         fechaInicio: new FormControl(''),
         fechaFin: new FormControl (''),
-        inscripcionAbierta: new FormControl(''),
+        inscripcionAbierta: new FormControl(false),
 
       })
 
@@ -33,7 +33,7 @@ export class CursosAgregarComponent {
   }
   agregarCurso(){
     let curso: Curso = {
-      id: '',
+      id:'',
       nombre: this.formulario.value.nombre,
       comision: this.formulario.value.comision,
       fechaInicio: this.formulario.value.fechaInicio,
@@ -45,6 +45,6 @@ export class CursosAgregarComponent {
     this.cursoService.agregarCurso(curso).subscribe((curso: Curso)=>{
       alert(`${curso.nombre} ha sido agregado`)
     });
-    this.router.navigate(['cursos/card']);
+    this.router.navigate(['/cursos/card']);
   }
 }

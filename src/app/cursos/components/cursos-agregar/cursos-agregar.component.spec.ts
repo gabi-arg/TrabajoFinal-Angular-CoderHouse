@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CursosAgregarComponent } from './cursos-agregar.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BooleanoATextoPipe } from '../../pipes/booleano-atexto.pipe';
 
 describe('CursosAgregarComponent', () => {
   let component: CursosAgregarComponent;
@@ -8,7 +10,16 @@ describe('CursosAgregarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CursosAgregarComponent ]
+      declarations: [
+        CursosAgregarComponent,
+        BooleanoATextoPipe,
+
+       ],
+      imports: [
+        ReactiveFormsModule,
+
+
+      ]
     })
     .compileComponents();
 
@@ -17,7 +28,7 @@ describe('CursosAgregarComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Componente creado correctamente', () => {
     expect(component).toBeTruthy();
   });
 });

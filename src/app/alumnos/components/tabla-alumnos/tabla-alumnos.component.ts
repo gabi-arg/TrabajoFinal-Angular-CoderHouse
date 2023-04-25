@@ -6,6 +6,8 @@ import { AlumnosService } from '../../services/alumnos.service';
 
 import { MatDialog } from '@angular/material/dialog';
 import { EditarAlumnosComponent } from '../editar-alumnos/editar-alumnos.component';
+import { Sesion } from 'src/app/models/sesion';
+import { SesionService } from 'src/app/core/services/sesion.service';
 
 @Component({
   selector: 'app-tabla-alumnos',
@@ -18,9 +20,11 @@ export class TablaAlumnosComponent implements OnInit {
     suscripcion!:Subscription;
     alumno!: Alumno[];
     alumnos$!: Observable<Alumno[]>
+    sesion$!: Observable<Sesion>
     constructor(
       private alumnoService: AlumnosService,
-      private dialog: MatDialog
+      private dialog: MatDialog,
+      private sesion: SesionService
 
       ){}
 
@@ -31,6 +35,7 @@ export class TablaAlumnosComponent implements OnInit {
       this.suscripcion = this.alumnoService.obtenerAlumno().subscribe((alumnos: Alumno[])=>{
         this.dataSource.data = alumnos;
       })
+      this.sesion$ = this.sesion.obtenerSesion();
     };
 
     editarAlumno(alumno: Alumno){

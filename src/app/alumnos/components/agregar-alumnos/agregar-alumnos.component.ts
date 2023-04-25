@@ -11,14 +11,11 @@ import { Alumno } from 'src/app/models/alumnos';
 })
 export class AgregarAlumnosComponent {
   formulario!: FormGroup;
-
   constructor(
     private alumnoService: AlumnosService,
     private router: Router,
-
   ){}
   ngOnInit(): void{
-
     this.formulario = new FormGroup({
         id: new FormControl(''),
         nombre:  new FormControl(''),
@@ -27,12 +24,7 @@ export class AgregarAlumnosComponent {
         pais: new FormControl('') ,
         fechaNac: new FormControl(''),
         cursoRealizado: new FormControl (''),
-
-
-
-      })
-
-
+    })
   }
   agregarAlumno(){
     let alumno: Alumno = {

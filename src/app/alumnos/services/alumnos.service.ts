@@ -23,7 +23,7 @@ constructor(
   agregarAlumno(alumno: Alumno): Observable<Alumno>{
     return this.http.post<Alumno>(`${env2.apiURL}/alumnos`,alumno)
    }
-   eliminarAlumno(alumno:Alumno): Observable<Alumno>{
+  eliminarAlumno(alumno:Alumno): Observable<Alumno>{
     return this.http.delete<Alumno>(`${env2.apiURL}/alumnos/${alumno.id}`)
    }
 }
